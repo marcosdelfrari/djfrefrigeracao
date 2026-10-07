@@ -31,7 +31,7 @@ export function Navbar() {
       className={`sticky top-0 z-50 transition-colors duration-200 ${
         scrolled
           ? "border-b border-[#e2e8f0] bg-white"
-          : "border-b border-transparent bg-[#0A3550]"
+          : "border-b border-transparent bg-[#0A3077]"
       }`}
     >
       <div className="mx-auto flex h-[80px] max-w-6xl items-center justify-between px-4 md:px-10">
@@ -55,7 +55,7 @@ export function Navbar() {
               href={link.href}
               className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
                 scrolled
-                  ? "text-[#525252] hover:text-[#0A3550]"
+                  ? "text-[#525252] hover:text-[#0A3077]"
                   : "text-white/75 hover:text-white"
               }`}
             >
@@ -68,7 +68,7 @@ export function Navbar() {
           type="button"
           className={`flex h-10 w-10 items-center justify-center rounded-full border transition-colors duration-200 lg:hidden ${
             scrolled
-              ? "border-[#e2e8f0] text-[#0A3550] hover:bg-[#f3f3f3]"
+              ? "border-[#e2e8f0] text-[#0A3077] hover:bg-[#f3f3f3]"
               : "border-white/25 text-white hover:bg-white/10"
           }`}
           aria-label={open ? "Fechar menu" : "Abrir menu"}
@@ -83,7 +83,7 @@ export function Navbar() {
           className={`border-t px-4 py-4 transition-colors duration-200 lg:hidden ${
             scrolled
               ? "border-[#e2e8f0] bg-white"
-              : "border-white/10 bg-[#0A3550]"
+              : "border-white/10 bg-[#0A3077]"
           }`}
         >
           <nav className="flex flex-col gap-1">
@@ -94,7 +94,7 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 className={`rounded-[12px] px-4 py-3 text-sm font-medium transition-colors duration-200 ${
                   scrolled
-                    ? "text-[#525252] hover:bg-[#f3f3f3] hover:text-[#0A3550]"
+                    ? "text-[#525252] hover:bg-[#f3f3f3] hover:text-[#0A3077]"
                     : "text-white/80 hover:bg-white/10 hover:text-white"
                 }`}
               >

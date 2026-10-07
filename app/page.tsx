@@ -110,7 +110,7 @@ export default function HomePage() {
         {/* Hero */}
         <section
           id="inicio"
-          className="border-b border-[#e2e8f0] bg-[#0A3550]"
+          className="border-b border-[#e2e8f0] bg-[#0A3077]"
         >
           <div className="mx-auto grid max-w-6xl gap-6 px-4 pt-7 pb-10 sm:gap-8 sm:py-14 md:gap-12 md:px-10 md:py-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <HeroCopy>
@@ -127,8 +127,7 @@ export default function HomePage() {
               </HeroLine>
               <HeroLine>
                 <p className="mt-2.5 max-w-lg text-sm leading-relaxed text-white/80 sm:text-base md:mt-4 md:text-lg">
-                  Trabalhamos com todas as marcas, direto na sua casa.
-                 
+                  Geladeira e ar-condicionado na sua casa.
                 </p>
               </HeroLine>
               <HeroLine className="mt-4.5 flex w-full flex-col gap-3 md:mt-8 md:w-auto md:flex-row md:items-center">
@@ -154,7 +153,7 @@ export default function HomePage() {
 
               {/* Card visual exclusivo para mobile/tablet (sem sombra e sem degradê) */}
               <HeroLine className="mt-4.5 w-full lg:hidden">
-                <div className="rounded-[18px] border border-white/15 bg-[#083049] p-3.5 text-white sm:p-4">
+                <div className="rounded-[18px] border border-white/15 bg-[#08255f] p-3.5 text-white sm:p-4">
                   <div className="flex items-center justify-between border-b border-white/10 pb-2.5 sm:pb-3">
                     <div className="flex items-center gap-2.5">
                       <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-white">
@@ -217,7 +216,7 @@ export default function HomePage() {
               <p className="text-xs font-semibold uppercase tracking-wider text-[#525252]">
                 Por que a DJF
               </p>
-              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[#0A3550] md:text-4xl">
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[#0A3077] md:text-4xl">
                 Por que nos chamar
               </h2>
               <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#525252] md:mt-3 md:text-base">
@@ -231,8 +230,8 @@ export default function HomePage() {
                 const Icon = item.icon;
                 return (
                   <StaggerItem key={item.title}>
-                    <article className="flex items-start gap-3 px-4 py-3.5 md:block md:rounded-[18px] md:border md:border-[#e2e8f0] md:bg-white md:p-8 md:transition-colors md:duration-200 md:hover:bg-[#f3f8fc]">
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[rgba(27,108,168,0.12)] text-[#1B6CA8] md:h-11 md:w-11">
+                    <article className="flex items-start gap-3 px-4 py-3.5 md:block md:rounded-[18px] md:border md:border-[#e2e8f0] md:bg-white md:p-8 md:transition-colors md:duration-200 md:hover:bg-[#eef3fd]">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[rgba(10,48,119,0.12)] text-[#0A3077] md:h-11 md:w-11">
                         <Icon className="h-4 w-4 md:h-5 md:w-5" aria-hidden />
                       </span>
                       <div className="min-w-0">
@@ -261,7 +260,7 @@ export default function HomePage() {
               <p className="text-xs font-semibold uppercase tracking-wider text-[#525252]">
                 Soluções
               </p>
-              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[#0A3550] md:text-4xl">
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[#0A3077] md:text-4xl">
                 O que consertamos
               </h2>
               <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#525252] md:mt-3 md:text-base">
@@ -275,8 +274,8 @@ export default function HomePage() {
                 const Icon = solution.icon;
                 return (
                   <StaggerItem key={solution.title}>
-                    <article className="flex items-start gap-3 px-4 py-3.5 md:flex-col md:rounded-[18px] md:border md:border-[#e2e8f0] md:bg-[#f7f9fc] md:p-8 md:transition-colors md:duration-200 md:hover:bg-[#f0f7fc]">
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[rgba(27,108,168,0.12)] text-[#1B6CA8] md:h-11 md:w-11">
+                    <article className="flex items-start gap-3 px-4 py-3.5 md:flex-col md:rounded-[18px] md:border md:border-[#e2e8f0] md:bg-[#f7f9fc] md:p-8 md:transition-colors md:duration-200 md:hover:bg-[#eef3fd]">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[rgba(10,48,119,0.12)] text-[#0A3077] md:h-11 md:w-11">
                         <Icon className="h-4 w-4 md:h-5 md:w-5" aria-hidden />
                       </span>
                       <div className="min-w-0">
@@ -302,7 +301,7 @@ export default function HomePage() {
               <p className="text-xs font-semibold uppercase tracking-wider text-[#525252]">
                 Como funciona
               </p>
-              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[#0A3550] md:text-4xl">
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[#0A3077] md:text-4xl">
                 Como funciona
               </h2>
               <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#525252] md:mt-3 md:text-base">
@@ -314,7 +313,7 @@ export default function HomePage() {
               {steps.map((step) => (
                 <StaggerItem key={step.n}>
                   <div className="flex gap-3 border-b border-[#e2e8f0] py-3.5 last:border-b-0 md:block md:rounded-[18px] md:border md:border-[#e2e8f0] md:bg-[#f7f9fc] md:p-8 md:last:border">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[rgba(27,108,168,0.12)] text-xs font-semibold text-[#1B6CA8] md:mb-0 md:h-auto md:w-auto md:justify-start md:rounded-none md:bg-transparent md:uppercase md:tracking-wider">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[rgba(10,48,119,0.12)] text-xs font-semibold text-[#0A3077] md:mb-0 md:h-auto md:w-auto md:justify-start md:rounded-none md:bg-transparent md:uppercase md:tracking-wider">
                       {step.n}
                     </span>
                     <div className="min-w-0 pt-0.5 md:pt-0">
@@ -332,7 +331,7 @@ export default function HomePage() {
 
             <Reveal className="mt-10 hidden justify-center md:flex">
               <WhatsappLink
-                className="rounded-full bg-[#1B6CA8] px-7 py-3.5 text-sm font-semibold text-white hover:bg-[#2280C4]"
+                className="rounded-full bg-[#0A3077] px-7 py-3.5 text-sm font-semibold text-white hover:bg-[#08255f]"
                 message="Olá! Quero começar pelo passo 1 — preciso de ajuda."
               >
                 Chamar no WhatsApp
@@ -351,7 +350,7 @@ export default function HomePage() {
               <p className="text-xs font-semibold uppercase tracking-wider text-[#525252]">
                 Depoimentos
               </p>
-              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[#0A3550] md:text-4xl">
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[#0A3077] md:text-4xl">
                 Clientes
               </h2>
               <p className="mt-3 hidden max-w-2xl text-base leading-relaxed text-[#525252] md:block">
@@ -371,7 +370,7 @@ export default function HomePage() {
             <p className="text-center text-xs font-semibold uppercase tracking-wider text-[#525252]">
               FAQ
             </p>
-            <h2 className="mt-2 text-center text-2xl font-semibold tracking-tight text-[#0A3550] md:text-4xl">
+            <h2 className="mt-2 text-center text-2xl font-semibold tracking-tight text-[#0A3077] md:text-4xl">
               Dúvidas
             </h2>
             <p className="mx-auto mt-3 hidden max-w-2xl text-center text-base leading-relaxed text-[#525252] md:block">
@@ -385,7 +384,7 @@ export default function HomePage() {
 
         {/* CTA final — desktop */}
         <section className="hidden px-4 pb-16 md:block md:px-10 md:pb-24">
-          <div className="mx-auto max-w-6xl overflow-hidden rounded-[18px] bg-[#0A3550] px-6 py-12 text-center md:px-12 md:py-16">
+          <div className="mx-auto max-w-6xl overflow-hidden rounded-[18px] bg-[#0A3077] px-6 py-12 text-center md:px-12 md:py-16">
             <h2 className="text-2xl font-semibold tracking-tight text-white md:text-4xl">
               Precisa de orçamento?
             </h2>
@@ -413,7 +412,7 @@ export default function HomePage() {
         </section>
       </main>
 
-      <footer className="bg-[#0A3550] text-white">
+      <footer className="bg-[#0A3077] text-white">
         <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-2 md:grid-cols-3 md:px-10 md:py-12">
           <div>
             <p className="text-base font-semibold tracking-tight">

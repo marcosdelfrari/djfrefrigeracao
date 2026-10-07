@@ -113,7 +113,7 @@ export function HeroVisual() {
         : null}
 
       <div className="absolute inset-0 rounded-[18px] border border-white/20 bg-white/10" />
-      <div className="absolute inset-6 flex flex-col justify-between rounded-[18px] border border-white/15 bg-[#083049] p-8">
+      <div className="absolute inset-6 flex flex-col justify-between rounded-[18px] border border-white/15 bg-[#08255f] p-8">
         <div className="flex items-center gap-3">
           <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/15">
             <Wrench className="h-5 w-5 text-white" aria-hidden />
@@ -140,7 +140,7 @@ export function HeroVisual() {
           </div>
         </div>
         <WhatsappLink
-          className="w-full rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#0A3550] hover:bg-[#f0f7fc]"
+          className="w-full rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#0A3077] hover:bg-[#eef3fd]"
           message="Olá! Vim pelo site e quero um orçamento."
         >
           Orçamento no WhatsApp

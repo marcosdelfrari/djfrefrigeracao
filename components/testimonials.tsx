@@ -66,7 +66,7 @@ export function Testimonials() {
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star
                   key={i}
-                  className="h-4 w-4 fill-[#1B6CA8] text-[#1B6CA8]"
+                  className="h-4 w-4 fill-[#0A3077] text-[#0A3077]"
                   aria-hidden
                 />
               ))}
@@ -75,7 +75,7 @@ export function Testimonials() {
               &ldquo;{item.text}&rdquo;
             </p>
             <div className="mt-5 flex items-center gap-3 md:mt-6">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0A3550] text-sm font-semibold text-white">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0A3077] text-sm font-semibold text-white">
                 {item.name.charAt(0)}
               </span>
               <p className="text-sm font-semibold text-[#171717]">{item.name}</p>
@@ -100,10 +100,10 @@ export function Testimonials() {
             className="relative flex h-2 items-center justify-center"
           >
             <motion.span
-              className="block h-2 rounded-full bg-[#1B6CA8]"
+              className="block h-2 rounded-full bg-[#0A3077]"
               animate={{
                 width: active === index ? 24 : 8,
-                backgroundColor: active === index ? "#1B6CA8" : "#cbd5e1",
+                backgroundColor: active === index ? "#0A3077" : "#cbd5e1",
               }}
               transition={{ type: "spring", stiffness: 420, damping: 28 }}
             />

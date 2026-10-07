@@ -48,7 +48,7 @@ export function Faq() {
                 {item.q}
               </span>
               <ChevronDown
-                className={`h-4 w-4 shrink-0 text-[#1B6CA8] transition-transform duration-200 ${
+                className={`h-4 w-4 shrink-0 text-[#0A3077] transition-transform duration-200 ${
                   open ? "rotate-180" : ""
                 }`}
                 aria-hidden
