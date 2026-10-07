@@ -27,6 +27,8 @@ const nextConfig: NextConfig = {
           {
             key: "Link",
             value: [
+              '</.well-known/mcp/server-card.json>; rel="mcp-server-card"; type="application/json"',
+              '</.well-known/ai-catalog.json>; rel="ai-catalog"; type="application/json"',
               '</.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"',
               '</agents.json>; rel="describedby"; type="application/json"',
               '</sitemap.xml>; rel="describedby"; type="application/xml"',

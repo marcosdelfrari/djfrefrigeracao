@@ -19,6 +19,9 @@ export function GET() {
       },
     ],
     links: {
+      "mcp-server-card": `${siteUrl}/.well-known/mcp/server-card.json`,
+      mcp: `${siteUrl}/mcp`,
+      "ai-catalog": `${siteUrl}/.well-known/ai-catalog.json`,
       "api-catalog": `${siteUrl}/.well-known/api-catalog`,
       sitemap: `${siteUrl}/sitemap.xml`,
       robots: `${siteUrl}/robots.txt`,

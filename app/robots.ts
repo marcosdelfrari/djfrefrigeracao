@@ -43,7 +43,11 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "*",
         allow: "/",
         disallow: ["/api/"],
-        other: contentSignal,
+        other: {
+          ...contentSignal,
+          /** ARD / AI Catalog discovery (Agentmap directive). */
+          Agentmap: `${siteUrl}/.well-known/ai-catalog.json`,
+        },
       },
       {
         userAgent: [...AI_SEARCH_BOTS],

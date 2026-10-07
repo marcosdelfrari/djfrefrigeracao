@@ -14,7 +14,24 @@ function buildCatalog() {
             title: "DJF Refrigeração — site público",
           },
         ],
+        "item": [
+          {
+            href: `${siteUrl}/mcp`,
+            type: "application/json",
+            title: "MCP Streamable HTTP endpoint",
+          },
+        ],
         describedby: [
+          {
+            href: `${siteUrl}/.well-known/mcp/server-card.json`,
+            type: "application/json",
+            title: "MCP Server Card",
+          },
+          {
+            href: `${siteUrl}/.well-known/ai-catalog.json`,
+            type: "application/json",
+            title: "AI Catalog (ARD)",
+          },
           {
             href: `${siteUrl}/sitemap.xml`,
             type: "application/xml",
