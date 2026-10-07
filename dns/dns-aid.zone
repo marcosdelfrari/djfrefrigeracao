@@ -1,0 +1,36 @@
+; DNS for AI Discovery (DNS-AID)
+; draft-mozleywilliams-dnsop-dnsaid + RFC 9460
+;
+; HOW TO USE
+; 1. Replace every occurrence of EXAMPLE.COM with your apex domain
+;    (custom domain under your DNS host — not *.vercel.app).
+; 2. Publish these ServiceMode SVCB records at your DNS provider
+;    (Cloudflare, Route 53, Google Cloud DNS, DNSimple, Vercel DNS, …).
+; 3. Enable DNSSEC on the zone and publish the DS record at the registrar
+;    so validating resolvers return AD=1 answers.
+; 4. Verify:
+;      dig +short SVCB _index._agents.EXAMPLE.COM @1.1.1.1
+;      dig +dnssec SVCB _index._agents.EXAMPLE.COM @1.1.1.1
+;
+; Notes
+; - TargetName MUST NOT contain underscores (TLS / public certs).
+; - Prefer SVCB (type 64). Some scanners also accept HTTPS (type 65).
+; - Do not invent unregistered named SvcParams (cap, endpoint, bap, …)
+;   until IANA assigns numbers; use only registered keys (alpn, port, …).
+
+; Organizational agent index (required well-known entrypoint)
+_index._agents.EXAMPLE.COM. 300 IN SVCB 1 EXAMPLE.COM. (
+    alpn="h2,h3"
+    port=443
+    mandatory=alpn,port
+)
+
+; Optional: same binding as HTTPS RR if your provider prefers type 65
+; _index._agents.EXAMPLE.COM. 300 IN HTTPS 1 EXAMPLE.COM. alpn="h2,h3" port=443 mandatory=alpn,port
+
+; Optional A2A leaf when you publish /.well-known/agent-card.json
+; _a2a._agents.EXAMPLE.COM. 300 IN SVCB 1 EXAMPLE.COM. (
+;     alpn="h2,h3"
+;     port=443
+;     mandatory=alpn,port
+; )

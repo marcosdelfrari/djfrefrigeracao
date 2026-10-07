@@ -11,6 +11,7 @@ import {
   Zap,
 } from "lucide-react";
 import { BrandsMarquee } from "@/components/brands-marquee";
+import { SolutionsIllustrationsCarousel } from "@/components/solutions-illustrations-carousel";
 import { Faq } from "@/components/faq";
 import { FloatingWhatsapp } from "@/components/floating-whatsapp";
 import { HeroCopy, HeroLine, HeroVisual } from "@/components/hero-motion";
@@ -112,47 +113,67 @@ export default function HomePage() {
           id="inicio"
           className="border-b border-[#e2e8f0] bg-[#0A3077]"
         >
-          <div className="mx-auto grid max-w-6xl gap-6 px-4 pt-7 pb-10 sm:gap-8 sm:py-14 md:gap-12 md:px-10 md:py-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div className="mx-auto grid max-w-6xl gap-6 px-4 pb-12 pt-10 sm:gap-8 sm:pb-14 sm:pt-12 md:gap-12 md:px-10 md:py-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <HeroCopy>
               <HeroLine>
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1.5 text-xs font-medium text-white/90">
-                  <span className="h-2 w-2 rounded-full bg-[#25D366]" aria-hidden />
-                  <span>Atendimento Disponível</span>
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-xs font-medium text-white">
+                  <span className="relative flex h-2 w-2" aria-hidden>
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#25D366] opacity-60" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-[#25D366]" />
+                  </span>
+                  <span>Atendimento disponível hoje</span>
                 </div>
               </HeroLine>
               <HeroLine>
-                <h1 className="mt-2.5 max-w-xl text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl md:leading-[1.1]">
-                  Conserto e Manutenção
+                <h1 className="mt-4 max-w-xl text-[1.75rem] font-semibold leading-[1.12] tracking-tight text-white sm:text-4xl md:mt-2.5 md:text-5xl md:leading-[1.1]">
+                  Conserto e manutenção
                 </h1>
               </HeroLine>
               <HeroLine>
-                <p className="mt-2.5 max-w-lg text-sm leading-relaxed text-white/80 sm:text-base md:mt-4 md:text-lg">
-                  Geladeira e ar-condicionado na sua casa.
+                <p className="mt-3 max-w-lg text-base leading-snug text-white/85 sm:text-base md:mt-4 md:text-lg md:leading-relaxed md:text-white/80">
+                  <strong className="font-semibold text-white">
+                    Geladeira
+                  </strong>{" "}
+                  e{" "}
+                  <strong className="font-semibold text-white">
+                    ar-condicionado
+                  </strong>{" "}
+                  na sua casa, em Belo Horizonte e região.
                 </p>
               </HeroLine>
-              <HeroLine className="mt-4.5 flex w-full flex-col gap-3 md:mt-8 md:w-auto md:flex-row md:items-center">
+              <HeroLine className="mt-4 w-full md:hidden">
+                <ul className="flex flex-wrap gap-2">
+                  <li className="rounded-full border border-white/15 bg-white/10 px-2.5 py-1 text-[11px] font-medium text-white/90">
+                    Respostas rápidas
+                  </li>
+                  <li className="rounded-full border border-white/15 bg-white/10 px-2.5 py-1 text-[11px] font-medium text-white/90">
+                    Segunda a domingo
+                  </li>
+                </ul>
+              </HeroLine>
+              <HeroLine className="mt-5 flex w-full max-w-md flex-col gap-3 md:mt-8 md:w-auto md:max-w-none md:flex-row md:items-center">
                 <WhatsappLink
-                  className="w-full justify-center rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#1ebe57] md:w-auto"
+                  className="w-full justify-center rounded-full bg-[#25D366] px-6 py-4 text-base font-semibold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] transition-colors duration-200 hover:bg-[#1ebe57] md:w-auto md:py-3.5 md:text-sm"
                   message="Olá! Quero agendar uma visita técnica."
                 >
                   Chamar no WhatsApp
                 </WhatsappLink>
                 <a
                   href="#como-funciona"
-                  className="hidden items-center justify-center rounded-full border border-white/30 px-6 py-3.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/10 md:inline-flex"
+                  className="hidden items-center justify-center rounded-full border border-white/30 px-6 py-3.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/10 sm:inline-flex md:inline-flex md:w-auto"
                 >
                   Como funciona
                 </a>
               </HeroLine>
-              <HeroLine>
+              <HeroLine className="hidden md:block">
                 <p className="mt-2.5 flex items-center gap-2 text-xs text-white/70">
                   <Zap className="h-3.5 w-3.5 shrink-0 text-[#25D366]" aria-hidden />
                   <span>Pré-avaliação rápida no WhatsApp em até 15 min</span>
                 </p>
               </HeroLine>
 
-              {/* Card visual exclusivo para mobile/tablet (sem sombra e sem degradê) */}
-              <HeroLine className="mt-4.5 w-full lg:hidden">
+              {/* Card visual exclusivo para mobile/tablet */}
+              <HeroLine className="mt-5 w-full lg:hidden">
                 <div className="rounded-[18px] border border-white/15 bg-[#08255f] p-3.5 text-white sm:p-4">
                   <div className="flex items-center justify-between border-b border-white/10 pb-2.5 sm:pb-3">
                     <div className="flex items-center gap-2.5">
@@ -206,6 +227,16 @@ export default function HomePage() {
               Trabalhamos com as principais marcas
             </p>
             <BrandsMarquee />
+          </div>
+        </section>
+
+        {/* Equipamentos */}
+        <section
+          id="equipamentos"
+          className="scroll-mt-24 border-b border-[#e2e8f0] bg-white py-10 md:py-16"
+        >
+          <div className="mx-auto max-w-6xl px-4 md:px-10">
+            <SolutionsIllustrationsCarousel />
           </div>
         </section>
 
