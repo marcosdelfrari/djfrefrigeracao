@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Mukta } from "next/font/google";
+import Script from "next/script";
 import { WebMcpProvider } from "@/components/webmcp-provider";
 import { getSiteUrl } from "@/lib/site";
 import "./globals.css";
+
+const GA_MEASUREMENT_ID = "G-5R5CLS7LF4";
 
 const mukta = Mukta({
   subsets: ["latin"],
@@ -19,6 +22,18 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="pt-BR" className={`${mukta.className} h-full antialiased`}>
+      <head>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="beforeInteractive"
+        />
+        <Script id="google-analytics" strategy="beforeInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_MEASUREMENT_ID}');`}
+        </Script>
+      </head>
       <body className="min-h-full bg-[#f7f9fc] text-[#171717]">
         <WebMcpProvider />
         {children}
