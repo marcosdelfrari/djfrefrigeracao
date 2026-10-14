@@ -1,4 +1,7 @@
+"use client";
+
 import { MessageCircle } from "lucide-react";
+import { trackWhatsappConversion } from "@/lib/google-ads";
 import { whatsappUrl } from "@/lib/whatsapp";
 
 type WhatsappLinkProps = {
@@ -19,6 +22,7 @@ export function WhatsappLink({
       href={whatsappUrl(message)}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={trackWhatsappConversion}
       className={`inline-flex items-center justify-center gap-2 transition-colors duration-200 ${className}`}
     >
       {showIcon ? <MessageCircle className="h-4 w-4 shrink-0" aria-hidden /> : null}

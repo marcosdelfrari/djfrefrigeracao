@@ -2,6 +2,7 @@
 
 import { MessageCircle } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
+import { trackWhatsappConversion } from "@/lib/google-ads";
 import { whatsappUrl } from "@/lib/whatsapp";
 
 export function FloatingWhatsapp() {
@@ -13,6 +14,7 @@ export function FloatingWhatsapp() {
         href={whatsappUrl("Olá! Vim pelo site e quero falar com um técnico.")}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={trackWhatsappConversion}
         aria-label="Chamar no WhatsApp"
         className="pointer-events-auto relative inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#25D366] px-5 py-3.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#1ebe57]"
         initial={reduce ? false : { opacity: 0, y: 24, scale: 0.92 }}

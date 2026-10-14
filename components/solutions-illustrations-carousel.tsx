@@ -50,6 +50,7 @@ export function SolutionsIllustrationsCarousel() {
   const reduceMotion = useReducedMotion();
   const scrollerRef = useRef<HTMLDivElement>(null);
   const jumpingRef = useRef(false);
+  const jumpIdRef = useRef(0);
   const activeRef = useRef(0);
   const [active, setActive] = useState(0);
 
@@ -85,17 +86,30 @@ export function SolutionsIllustrationsCarousel() {
       const metrics = getMetrics();
       if (!el || !metrics) return;
 
+      const id = ++jumpIdRef.current;
+      const target = metrics.setWidth + logicalIndex * metrics.stride;
       jumpingRef.current = true;
       el.style.scrollSnapType = "none";
-      el.scrollTo({
-        left: metrics.setWidth + logicalIndex * metrics.stride,
-        behavior,
-      });
+      el.scrollTo({ left: target, behavior });
 
-      requestAnimationFrame(() => {
+      const release = () => {
+        if (jumpIdRef.current !== id) return;
         el.style.scrollSnapType = "";
         jumpingRef.current = false;
-      });
+      };
+
+      if (behavior === "smooth" && Math.abs(el.scrollLeft - target) > 1) {
+        const done = () => {
+          if (jumpIdRef.current !== id) return;
+          el.removeEventListener("scrollend", done);
+          release();
+          normalizeInfiniteScroll();
+        };
+        el.addEventListener("scrollend", done);
+        return;
+      }
+
+      requestAnimationFrame(release);
     },
     [getMetrics],
   );
@@ -196,24 +210,24 @@ export function SolutionsIllustrationsCarousel() {
 
         <div
           ref={scrollerRef}
-          className="scrollbar-none grid grid-flow-col auto-cols-[min(88vw,360px)] gap-4 overflow-x-auto pb-2 snap-x snap-mandatory md:auto-cols-[calc((100%-4.5rem)/4)] md:gap-6 md:snap-start"
+          className="scrollbar-none grid grid-flow-col auto-cols-[calc((100%-1rem)/2)] gap-4 overflow-x-auto pb-2 snap-x snap-mandatory md:auto-cols-[calc((100%-4.5rem)/4)] md:gap-6"
           aria-label="Ilustrações dos equipamentos atendidos"
         >
           {loopItems.map((item, index) => (
             <figure
               key={`${item.src}-${item.copy}-${index}`}
               data-slide
-              className="min-w-0 snap-center md:snap-start"
+              className="min-w-0 snap-start"
             >
-              <div className="flex h-full flex-col items-center rounded-[18px] bg-[#eef3fd] px-4 pb-4 pt-6 md:px-3 md:pb-3 md:pt-5">
-                <div className="relative flex h-[min(52vw,220px)] w-full items-end justify-center md:h-[140px] lg:h-[168px]">
+              <div className="flex h-full flex-col items-center rounded-[18px] bg-[#eef3fd] px-2 pb-3 pt-4 md:px-3 md:pb-3 md:pt-5">
+                <div className="relative flex h-[min(34vw,148px)] w-full items-end justify-center md:h-[140px] lg:h-[168px]">
                   <Image
                     src={item.src}
                     alt={item.alt}
                     width={400}
                     height={320}
                     className="max-h-full w-auto max-w-full object-contain object-bottom"
-                    sizes="(max-width: 768px) 88vw, 25vw"
+                    sizes="(max-width: 768px) 46vw, 25vw"
                     priority={index >= COUNT && index < COUNT + DESKTOP_VISIBLE}
                   />
                 </div>
@@ -227,7 +241,37 @@ export function SolutionsIllustrationsCarousel() {
       </div>
 
       <div
-        className="mt-5 flex items-center justify-center gap-2 md:mt-6"
+        className="mt-4 flex items-center justify-center gap-2 md:hidden"
+        role="tablist"
+        aria-label="Ilustrações"
+      >
+        {illustrations.map((item, index) => (
+          <button
+            key={item.src}
+            type="button"
+            role="tab"
+            aria-selected={active === index}
+            aria-label={item.label}
+            onClick={() => goToLogical(index)}
+            className={`relative h-11 w-11 shrink-0 overflow-hidden rounded-[8px] border bg-[#eef3fd] ${
+              active === index
+                ? "border-[#0A3077]"
+                : "border-transparent opacity-55"
+            }`}
+          >
+            <Image
+              src={item.src}
+              alt=""
+              width={88}
+              height={88}
+              className="h-full w-full object-contain p-1"
+            />
+          </button>
+        ))}
+      </div>
+
+      <div
+        className="mt-6 hidden items-center justify-center gap-2 md:flex"
         role="tablist"
         aria-label="Ilustrações"
       >

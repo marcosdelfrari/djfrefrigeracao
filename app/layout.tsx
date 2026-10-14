@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Mukta } from "next/font/google";
 import Script from "next/script";
 import { WebMcpProvider } from "@/components/webmcp-provider";
+import { GOOGLE_ADS_ID } from "@/lib/google-ads";
 import { getSiteUrl } from "@/lib/site";
 import "./globals.css";
 
@@ -31,7 +32,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${GA_MEASUREMENT_ID}');`}
+gtag('config', '${GA_MEASUREMENT_ID}');
+gtag('config', '${GOOGLE_ADS_ID}');`}
         </Script>
       </head>
       <body className="min-h-full bg-[#f7f9fc] text-[#171717]">
