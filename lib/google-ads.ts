@@ -11,4 +11,8 @@ export function trackWhatsappConversion() {
   gtag("event", "conversion", {
     send_to: WHATSAPP_CONVERSION_SEND_TO,
   });
+
+  gtag("event", "whatsapp_click", {
+    method: "whatsapp",
+  });
 }

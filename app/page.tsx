@@ -47,55 +47,35 @@ const benefits = [
 ];
 
 const steps = [
-  {
-    n: "01",
-    title: "Chame no WhatsApp",
-    description:
-      "Descreva o problema e, se puder, envie uma foto ou vídeo do equipamento.",
-  },
-  {
-    n: "02",
-    title: "Receba a pré-avaliação",
-    description:
-      "Em até 15 minutos alinhamos urgência, valor estimado e horário da visita.",
-  },
-  {
-    n: "03",
-    title: "Resolvemos no local",
-    description:
-      "O técnico vai até você, conserta com transparência e deixa 6 meses de garantia.",
-  },
+  { n: "01", title: "Mande foto no WhatsApp" },
+  { n: "02", title: "Pré-avaliação em 15 min" },
+  { n: "03", title: "Técnico resolve no local" },
 ];
 
 const solutions = [
   {
     title: "Geladeiras e Freezers",
-    description:
-      "Manutenção de geladeira de todas as marcas. Diagnóstico e reparo no local, com peças de qualidade e atendimento ágil em BH e região.",
+    description: "Não gela, vaza ou faz barulho. Conserto no local, de todas as marcas.",
     icon: Refrigerator,
   },
   {
     title: "Ar-condicionado",
-    description:
-      "Instalação, manutenção e reparo de ar-condicionado. Atendimento domiciliar para manter o conforto da sua casa ou comércio.",
+    description: "Não gela, goteja ou não liga. Instalação e reparo em casa ou no comércio.",
     icon: AirVent,
   },
   {
     title: "Expositores",
-    description:
-      "Manutenção preventiva e corretiva em balcões e expositores comerciais. Prioridade técnica para o seu negócio não parar.",
+    description: "Balcão parou de gelar? Reparo para o comércio não ficar parado.",
     icon: ThermometerSnowflake,
   },
   {
     title: "Cervejeiras",
-    description:
-      "Assistência especializada quando a cervejeira para de gelar ou esquenta. Diagnóstico preciso em residência ou estabelecimento.",
+    description: "Esquenta, não gela ou fica barulhenta. Reparo em casa ou no ponto.",
     icon: Snowflake,
   },
   {
     title: "Frigobar",
-    description:
-      "Barulho, falha de refrigeração ou pane — manutenção completa com orçamento transparente e suporte técnico qualificado.",
+    description: "Não gela, desliga sozinho ou faz barulho. Conserto com orçamento no local.",
     icon: Fan,
   },
 ];
@@ -204,20 +184,20 @@ export default function HomePage() {
               </p>
             </Reveal>
 
-            <Stagger className="mt-6 divide-y divide-[#e2e8f0] overflow-hidden rounded-[18px] border border-[#e2e8f0] bg-white md:mt-10 md:grid md:grid-cols-2 md:gap-4 md:divide-y-0 md:border-0 md:bg-transparent">
+            <Stagger className="mt-6 grid grid-cols-2 gap-3 md:mt-10 md:gap-4">
               {benefits.map((item) => {
                 const Icon = item.icon;
                 return (
                   <StaggerItem key={item.title}>
-                    <article className="flex items-start gap-3 px-4 py-3.5 md:block md:rounded-[18px] md:border md:border-[#e2e8f0] md:bg-white md:p-8 md:transition-colors md:duration-200 md:hover:bg-[#eef3fd]">
+                    <article className="flex h-full items-start gap-2.5 rounded-[18px] border border-[#e2e8f0] bg-white px-3 py-3.5 md:block md:p-8 md:transition-colors md:duration-200 md:hover:bg-[#eef3fd]">
                       <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[rgba(10,48,119,0.12)] text-[#0A3077] md:h-11 md:w-11">
                         <Icon className="h-4 w-4 md:h-5 md:w-5" aria-hidden />
                       </span>
                       <div className="min-w-0">
-                        <h3 className="text-sm font-semibold tracking-tight text-[#171717] md:mt-5 md:text-xl">
+                        <h3 className="text-sm font-semibold leading-snug tracking-tight text-[#171717] md:mt-5 md:text-xl">
                           {item.title}
                         </h3>
-                        <p className="mt-0.5 text-sm leading-snug text-[#525252] md:mt-2 md:text-base md:leading-relaxed">
+                        <p className="mt-2 hidden text-base leading-relaxed text-[#525252] md:block">
                           {item.description}
                         </p>
                       </div>
@@ -258,10 +238,10 @@ export default function HomePage() {
                         <Icon className="h-4 w-4 md:h-5 md:w-5" aria-hidden />
                       </span>
                       <div className="min-w-0">
-                        <h3 className="text-sm font-semibold tracking-tight text-[#171717] md:mt-5 md:text-xl">
+                        <h3 className="text-lg font-semibold tracking-tight text-[#171717] md:mt-5 md:text-2xl">
                           {solution.title}
                         </h3>
-                        <p className="mt-0.5 text-sm leading-snug text-[#525252] md:mt-2 md:text-base md:leading-relaxed">
+                        <p className="mt-0.5 text-xs leading-snug text-[#525252] md:mt-2 md:text-sm">
                           {solution.description}
                         </p>
                       </div>
@@ -274,44 +254,34 @@ export default function HomePage() {
         </section>
 
         {/* Como funciona */}
-        <section id="como-funciona" className="scroll-mt-24 py-10 md:py-24">
-          <div className="mx-auto max-w-6xl px-4 md:px-10">
+        <section id="como-funciona" className="scroll-mt-24 px-4 py-10 md:px-10 md:py-24">
+          <div className="mx-auto max-w-6xl overflow-hidden rounded-[18px] bg-[#0A3077] px-6 py-10 text-center md:px-12 md:py-16">
             <Reveal>
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#525252]">
+              <p className="text-xs font-semibold uppercase tracking-wider text-white/60">
                 Como funciona
               </p>
-              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[#0A3077] md:text-4xl">
-                Como funciona
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white md:text-4xl">
+                Sem formulário. Chame no WhatsApp.
               </h2>
-              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#525252] md:mt-3 md:text-base">
-                Sem formulário. O caminho mais rápido é o WhatsApp.
+              <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-white/80 md:text-base">
+                Mande uma foto do problema e receba a pré-avaliação em até 15
+                minutos. O técnico vai até você.
               </p>
             </Reveal>
 
-            <Stagger className="mt-6 md:mt-10 md:grid md:grid-cols-3 md:gap-4">
+            <ol className="mx-auto mt-8 flex max-w-3xl flex-col gap-3 text-left sm:flex-row sm:justify-center sm:gap-8 sm:text-center">
               {steps.map((step) => (
-                <StaggerItem key={step.n}>
-                  <div className="flex gap-3 border-b border-[#e2e8f0] py-3.5 last:border-b-0 md:block md:rounded-[18px] md:border md:border-[#e2e8f0] md:bg-[#f7f9fc] md:p-8 md:last:border">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[rgba(10,48,119,0.12)] text-xs font-semibold text-[#0A3077] md:mb-0 md:h-auto md:w-auto md:justify-start md:rounded-none md:bg-transparent md:uppercase md:tracking-wider">
-                      {step.n}
-                    </span>
-                    <div className="min-w-0 pt-0.5 md:pt-0">
-                      <h3 className="text-sm font-semibold tracking-tight text-[#171717] md:mt-3 md:text-xl">
-                        {step.title}
-                      </h3>
-                      <p className="mt-0.5 text-sm leading-snug text-[#525252] md:mt-2 md:text-base md:leading-relaxed">
-                        {step.description}
-                      </p>
-                    </div>
-                  </div>
-                </StaggerItem>
+                <li key={step.n} className="text-sm text-white/90">
+                  <span className="mr-2 font-semibold text-[#F6C445]">{step.n}</span>
+                  {step.title}
+                </li>
               ))}
-            </Stagger>
+            </ol>
 
-            <Reveal className="mt-10 hidden justify-center md:flex">
+            <Reveal className="mt-8 flex justify-center">
               <WhatsappLink
-                className="rounded-full bg-[#0A3077] px-7 py-3.5 text-sm font-semibold text-white hover:bg-[#08255f]"
-                message="Olá! Quero começar pelo passo 1 — preciso de ajuda."
+                className="rounded-full bg-[#25D366] px-7 py-3.5 text-sm font-semibold text-white hover:bg-[#1ebe57]"
+                message="Olá! Quero um orçamento — vou enviar foto do problema."
               >
                 Chamar no WhatsApp
               </WhatsappLink>
