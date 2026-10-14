@@ -7,7 +7,6 @@ import {
   SITE_SECTIONS,
   type SiteSection,
 } from "@/lib/webmcp";
-import { trackWhatsappConversion } from "@/lib/google-ads";
 import {
   ADDRESS_LINE,
   MAPS_URL,
@@ -168,7 +167,6 @@ function registerSiteTools(signal: AbortSignal) {
           WHATSAPP_INTENT_MESSAGES.general;
         const url = whatsappUrl(message);
         if (input.openInNewTab === true) {
-          trackWhatsappConversion();
           window.open(url, "_blank", "noopener,noreferrer");
         }
         return { whatsappUrl: url, message };
@@ -204,7 +202,6 @@ function handleWhatsappToolSubmit(event: React.FormEvent<HTMLFormElement>) {
 
   const url = whatsappUrl(message);
   const result = { whatsappUrl: url, message };
-  trackWhatsappConversion();
 
   if (native.agentInvoked && typeof native.respondWith === "function") {
     native.respondWith(Promise.resolve(result));

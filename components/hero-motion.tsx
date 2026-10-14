@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import {
   AirVent,
@@ -22,14 +23,16 @@ const flakes = [
 
 export function HeroCopy({
   children,
+  className = "",
 }: {
   children: React.ReactNode;
+  className?: string;
 }) {
   const reduce = useReducedMotion();
 
   return (
     <motion.div
-      className="flex flex-col items-start"
+      className={`flex w-full flex-col items-start ${className}`}
       initial={reduce ? false : "hidden"}
       animate="show"
       variants={{
@@ -71,6 +74,96 @@ export function HeroLine({
     >
       {children}
     </motion.div>
+  );
+}
+
+export function HeroMobile() {
+  const reduce = useReducedMotion();
+
+  return (
+    <div className="px-5 pb-10 pt-2 lg:hidden">
+      <HeroCopy className="items-center">
+        <HeroLine className="w-full">
+          <h1 className="text-center text-[2rem] font-extrabold leading-[1.08] tracking-tight text-white">
+            Sua geladeira
+            <span className="mt-1 block text-[#F6C445]">parou de gelar?</span>
+            A gente resolve.
+          </h1>
+        </HeroLine>
+
+        <HeroLine className="mt-6 w-full">
+          <div className="relative mx-auto h-[320px] w-full max-w-[420px]">
+            <div className="absolute left-1/2 top-4 h-[280px] w-[280px] -translate-x-1/2 overflow-hidden rounded-full bg-[#08255f]">
+              <Image
+                src="/hero.webp"
+                alt="Geladeira, expositor e freezer atendidos pela DJF"
+                fill
+                priority
+                sizes="280px"
+                className="object-contain object-bottom p-2"
+              />
+            </div>
+
+            <motion.div
+              className="absolute left-2 top-8 rounded-2xl bg-white px-3.5 py-2 shadow-[0_8px_24px_rgba(18,35,63,0.12)]"
+              animate={reduce ? undefined : { y: [0, -7, 0] }}
+              transition={{ duration: 4.8, delay: 0.4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <span className="block text-sm font-bold leading-tight text-[#12233f]">
+                Avaliação
+              </span>
+              <span className="block text-[11px] leading-tight text-[#8a8478]">
+                no WhatsApp
+              </span>
+            </motion.div>
+            <motion.div
+              className="absolute right-0 top-[108px] rounded-2xl bg-white px-3.5 py-2 shadow-[0_8px_24px_rgba(18,35,63,0.12)]"
+              animate={reduce ? undefined : { y: [0, -7, 0] }}
+              transition={{ duration: 4.8, delay: 0.4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <span className="block text-sm font-bold leading-tight text-[#12233f]">
+                6 meses
+              </span>
+              <span className="block text-[11px] leading-tight text-[#8a8478]">
+                de garantia
+              </span>
+            </motion.div>
+
+            <motion.div
+              className="absolute left-4 top-[200px] rounded-2xl bg-white px-3.5 py-2 shadow-[0_8px_24px_rgba(18,35,63,0.12)]"
+              animate={reduce ? undefined : { y: [0, -7, 0] }}
+              transition={{ duration: 4.8, delay: 0.4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <span className="block text-sm font-bold leading-tight text-[#12233f]">
+                Domiciliar
+              </span>
+              <span className="block text-[11px] leading-tight text-[#8a8478]">
+               Todos os dias
+              </span>
+            </motion.div>
+
+          </div>
+        </HeroLine>
+
+        <HeroLine className="w-full">
+          <p className="mx-auto mt-2 max-w-[340px] text-center text-[15px] leading-relaxed text-white/80">
+            Conserto de geladeira e ar-condicionado na sua casa, em Belo
+            Horizonte e região.
+          </p>
+        </HeroLine>
+
+        <HeroLine className="mt-6 flex w-full items-center justify-center gap-3">
+          <WhatsappLink
+            showIcon={false}
+            className="rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-white hover:bg-[#1ebe57]"
+            message="Olá! Quero agendar uma visita técnica."
+          >
+            Chamar no WhatsApp
+          </WhatsappLink>
+         
+        </HeroLine>
+      </HeroCopy>
+    </div>
   );
 }
 

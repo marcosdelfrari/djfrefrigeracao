@@ -4,6 +4,10 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
+import {
+  EquipmentCtaDialog,
+  type EquipmentCtaItem,
+} from "@/components/equipment-cta-dialog";
 
 const illustrations = [
   {
@@ -46,6 +50,47 @@ function mod(n: number, m: number) {
   return ((n % m) + m) % m;
 }
 
+function EquipmentCard({
+  item,
+  sizes,
+  priority = false,
+  desktop = false,
+  onSelect,
+}: {
+  item: EquipmentCtaItem;
+  sizes: string;
+  priority?: boolean;
+  desktop?: boolean;
+  onSelect: (item: EquipmentCtaItem) => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={() => onSelect(item)}
+      className={`flex h-full w-full cursor-pointer flex-col items-center rounded-[18px] bg-[#eef3fd] px-2 pb-3 pt-4 text-left transition-colors duration-200 hover:bg-[#e4ecfb] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0A3077] ${desktop ? "md:px-3 md:pb-3 md:pt-5" : ""}`}
+    >
+      <div
+        className={`relative flex h-[min(34vw,148px)] w-full items-end justify-center ${desktop ? "md:h-[140px] lg:h-[168px]" : ""}`}
+      >
+        <Image
+          src={item.src}
+          alt=""
+          width={400}
+          height={320}
+          className="max-h-full w-auto max-w-full object-contain object-bottom"
+          sizes={sizes}
+          priority={priority}
+        />
+      </div>
+      <span
+        className={`mt-3 line-clamp-2 w-full text-center text-sm font-semibold leading-snug tracking-tight text-[#0A3077] ${desktop ? "md:mt-2.5 md:text-xs lg:text-sm" : ""}`}
+      >
+        {item.label}
+      </span>
+    </button>
+  );
+}
+
 export function SolutionsIllustrationsCarousel() {
   const reduceMotion = useReducedMotion();
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -53,6 +98,8 @@ export function SolutionsIllustrationsCarousel() {
   const jumpIdRef = useRef(0);
   const activeRef = useRef(0);
   const [active, setActive] = useState(0);
+  const [selected, setSelected] = useState<EquipmentCtaItem | null>(null);
+  const closeDialog = useCallback(() => setSelected(null), []);
 
   const setActiveLogical = (index: number) => {
     activeRef.current = index;
@@ -71,7 +118,7 @@ export function SolutionsIllustrationsCarousel() {
     const el = scrollerRef.current;
     if (!el) return null;
     const slide = el.querySelector<HTMLElement>("[data-slide]");
-    if (!slide) return null;
+    if (!slide || slide.offsetWidth === 0) return null;
 
     const gap = Number.parseFloat(getComputedStyle(el).columnGap || "0") || 0;
     const stride = slide.offsetWidth + gap;
@@ -190,7 +237,19 @@ export function SolutionsIllustrationsCarousel() {
         Equipamentos que atendemos
       </p>
 
-      <div className="relative">
+      <ul className="grid grid-cols-2 gap-4 md:hidden">
+        {illustrations.map((item) => (
+          <li key={item.src}>
+            <EquipmentCard
+              item={item}
+              sizes="46vw"
+              onSelect={setSelected}
+            />
+          </li>
+        ))}
+      </ul>
+
+      <div className="relative hidden md:block">
         <button
           type="button"
           onClick={() => scrollBySteps(-1)}
@@ -214,60 +273,21 @@ export function SolutionsIllustrationsCarousel() {
           aria-label="Ilustrações dos equipamentos atendidos"
         >
           {loopItems.map((item, index) => (
-            <figure
+            <div
               key={`${item.src}-${item.copy}-${index}`}
               data-slide
               className="min-w-0 snap-start"
             >
-              <div className="flex h-full flex-col items-center rounded-[18px] bg-[#eef3fd] px-2 pb-3 pt-4 md:px-3 md:pb-3 md:pt-5">
-                <div className="relative flex h-[min(34vw,148px)] w-full items-end justify-center md:h-[140px] lg:h-[168px]">
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    width={400}
-                    height={320}
-                    className="max-h-full w-auto max-w-full object-contain object-bottom"
-                    sizes="(max-width: 768px) 46vw, 25vw"
-                    priority={index >= COUNT && index < COUNT + DESKTOP_VISIBLE}
-                  />
-                </div>
-                <figcaption className="mt-3 line-clamp-2 text-center text-sm font-semibold leading-snug tracking-tight text-[#0A3077] md:mt-2.5 md:text-xs lg:text-sm">
-                  {item.label}
-                </figcaption>
-              </div>
-            </figure>
+              <EquipmentCard
+                item={item}
+                sizes="(max-width: 768px) 46vw, 25vw"
+                priority={index >= COUNT && index < COUNT + DESKTOP_VISIBLE}
+                desktop
+                onSelect={setSelected}
+              />
+            </div>
           ))}
         </div>
-      </div>
-
-      <div
-        className="mt-4 flex items-center justify-center gap-2 md:hidden"
-        role="tablist"
-        aria-label="Ilustrações"
-      >
-        {illustrations.map((item, index) => (
-          <button
-            key={item.src}
-            type="button"
-            role="tab"
-            aria-selected={active === index}
-            aria-label={item.label}
-            onClick={() => goToLogical(index)}
-            className={`relative h-11 w-11 shrink-0 overflow-hidden rounded-[8px] border bg-[#eef3fd] ${
-              active === index
-                ? "border-[#0A3077]"
-                : "border-transparent opacity-55"
-            }`}
-          >
-            <Image
-              src={item.src}
-              alt=""
-              width={88}
-              height={88}
-              className="h-full w-full object-contain p-1"
-            />
-          </button>
-        ))}
       </div>
 
       <div
@@ -296,6 +316,8 @@ export function SolutionsIllustrationsCarousel() {
           </button>
         ))}
       </div>
+
+      <EquipmentCtaDialog item={selected} onClose={closeDialog} />
     </div>
   );
 }

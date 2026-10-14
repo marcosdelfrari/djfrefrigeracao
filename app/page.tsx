@@ -7,14 +7,13 @@ import {
   ShieldCheck,
   Snowflake,
   ThermometerSnowflake,
-  Wrench,
   Zap,
 } from "lucide-react";
 import { BrandsMarquee } from "@/components/brands-marquee";
 import { SolutionsIllustrationsCarousel } from "@/components/solutions-illustrations-carousel";
 import { Faq } from "@/components/faq";
 import { FloatingWhatsapp } from "@/components/floating-whatsapp";
-import { HeroCopy, HeroLine, HeroVisual } from "@/components/hero-motion";
+import { HeroCopy, HeroLine, HeroMobile, HeroVisual } from "@/components/hero-motion";
 import { Navbar } from "@/components/navbar";
 import { Reveal, Stagger, StaggerItem } from "@/components/reveal";
 import { Testimonials } from "@/components/testimonials";
@@ -111,9 +110,10 @@ export default function HomePage() {
         {/* Hero */}
         <section
           id="inicio"
-          className="border-b border-[#e2e8f0] bg-[#0A3077]"
+          className="border-b border-white/10 bg-[#0A3077] lg:border-[#e2e8f0]"
         >
-          <div className="mx-auto grid max-w-6xl gap-6 px-4 pb-12 pt-10 sm:gap-8 sm:pb-14 sm:pt-12 md:gap-12 md:px-10 md:py-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <HeroMobile />
+          <div className="mx-auto hidden max-w-6xl gap-6 px-4 pb-12 pt-10 sm:gap-8 sm:pb-14 sm:pt-12 md:gap-12 md:px-10 md:py-24 lg:grid lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <HeroCopy>
               <HeroLine>
                 <div className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-xs font-medium text-white">
@@ -126,7 +126,8 @@ export default function HomePage() {
               </HeroLine>
               <HeroLine>
                 <h1 className="mt-4 max-w-xl text-[1.75rem] font-semibold leading-[1.12] tracking-tight text-white sm:text-4xl md:mt-2.5 md:text-5xl md:leading-[1.1]">
-                  Conserto e manutenção
+                  Conserto e{" "}
+                  <span className="text-[#F6C445]">manutenção</span>
                 </h1>
               </HeroLine>
               <HeroLine>
@@ -141,17 +142,7 @@ export default function HomePage() {
                   na sua casa, em Belo Horizonte e região.
                 </p>
               </HeroLine>
-              <HeroLine className="mt-4 w-full md:hidden">
-                <ul className="flex flex-wrap gap-2">
-                  <li className="rounded-full border border-white/15 bg-white/10 px-2.5 py-1 text-[11px] font-medium text-white/90">
-                    Respostas rápidas
-                  </li>
-                  <li className="rounded-full border border-white/15 bg-white/10 px-2.5 py-1 text-[11px] font-medium text-white/90">
-                    Segunda a domingo
-                  </li>
-                </ul>
-              </HeroLine>
-              <HeroLine className="mt-5 flex w-full max-w-md flex-col gap-3 md:mt-8 md:w-auto md:max-w-none md:flex-row md:items-center">
+              <HeroLine className="mt-8 flex w-auto max-w-none flex-row items-center gap-3">
                 <WhatsappLink
                   className="w-full justify-center rounded-full bg-[#25D366] px-6 py-4 text-base font-semibold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] transition-colors duration-200 hover:bg-[#1ebe57] md:w-auto md:py-3.5 md:text-sm"
                   message="Olá! Quero agendar uma visita técnica."
@@ -165,54 +156,11 @@ export default function HomePage() {
                   Como funciona
                 </a>
               </HeroLine>
-              <HeroLine className="hidden md:block">
+              <HeroLine>
                 <p className="mt-2.5 flex items-center gap-2 text-xs text-white/70">
                   <Zap className="h-3.5 w-3.5 shrink-0 text-[#25D366]" aria-hidden />
                   <span>Pré-avaliação rápida no WhatsApp em até 15 min</span>
                 </p>
-              </HeroLine>
-
-              {/* Card visual exclusivo para mobile/tablet */}
-              <HeroLine className="mt-5 w-full lg:hidden">
-                <div className="rounded-[18px] border border-white/15 bg-[#08255f] p-3.5 text-white sm:p-4">
-                  <div className="flex items-center justify-between border-b border-white/10 pb-2.5 sm:pb-3">
-                    <div className="flex items-center gap-2.5">
-                      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-white">
-                        <Wrench className="h-3.5 w-3.5" aria-hidden />
-                      </span>
-                      <div>
-                        <p className="text-xs font-semibold leading-tight text-white">
-                          Atendimento domiciliar
-                        </p>
-                        <p className="text-[11px] leading-tight text-white/65">
-                          Técnico vai até a sua casa
-                        </p>
-                      </div>
-                    </div>
-                    <span className="rounded-full bg-[#25D366]/15 px-2.5 py-1 text-[11px] font-semibold text-[#25D366]">
-                      Hoje disponível
-                    </span>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-2 pt-2.5 sm:pt-3">
-                    <div className="flex items-center gap-2 rounded-[12px] border border-white/10 bg-white/5 px-2.5 py-2 text-xs text-white/90">
-                      <Refrigerator className="h-3.5 w-3.5 shrink-0 text-[#25D366]" aria-hidden />
-                      <span className="truncate">Todas as marcas</span>
-                    </div>
-                    <div className="flex items-center gap-2 rounded-[12px] border border-white/10 bg-white/5 px-2.5 py-2 text-xs text-white/90">
-                      <AirVent className="h-3.5 w-3.5 shrink-0 text-[#25D366]" aria-hidden />
-                      <span className="truncate">Ar-condicionado</span>
-                    </div>
-                    <div className="flex items-center gap-2 rounded-[12px] border border-white/10 bg-white/5 px-2.5 py-2 text-xs text-white/90">
-                      <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-[#25D366]" aria-hidden />
-                      <span className="truncate">6 meses garantia</span>
-                    </div>
-                    <div className="flex items-center gap-2 rounded-[12px] border border-white/10 bg-white/5 px-2.5 py-2 text-xs text-white/90">
-                      <BadgeCheck className="h-3.5 w-3.5 shrink-0 text-[#25D366]" aria-hidden />
-                      <span className="truncate">Técnicos certificados</span>
-                    </div>
-                  </div>
-                </div>
               </HeroLine>
             </HeroCopy>
 
